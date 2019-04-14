@@ -4,6 +4,7 @@
 #include "Popup.h"
 #include "Image.cpp"
 #include "Debug.h"
+#include <cstdio>
 
 int result;
 Image myImg = Image(IMAGE_Coldoge);
@@ -14,7 +15,7 @@ void setup()
 	gb.begin();
 }
 
-const char* entries[] = 
+const char* menu[] = 
 {
 	"Set Name",
 	"Set Tax amount",
@@ -33,7 +34,7 @@ void loop()
 	char name[16];
 	if (gb.buttons.pressed(BUTTON_MENU))
 	{
-		uint8_t entry = gb.gui.menu("What should we do ?", entries);
+		uint8_t entry = gb.gui.menu("What should we do ?", menu);
 		switch(entry)
 		{
 		case 0:
