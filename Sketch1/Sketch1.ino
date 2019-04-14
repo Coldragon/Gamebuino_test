@@ -43,19 +43,19 @@ void loop()
 			popup(name);
 			break;
 		case 1:
-			result = counter_select("Set Tax amount", 25, 100000, YELLOW); 
+			result = counter_select("Set Tax amount", 25,0, 85000, YELLOW); 
 			popup(result);
 			break;
 		case 2:
-			result = counter_select("Set Health focus", 0, 100, PURPLE);
+			result = counter_select("Set Health focus", 0, 0, 100, PURPLE);
 			popup(result);
 			break;
 		case 3:
-			result = counter_select("Set Alert level", 0, 5, RED);
+			result = counter_select("Set Alert level", 0, 0, 5, RED);
 			popup(result);
 			break;
 		case 4:
-			result = counter_select("Set Protection", 25, 200, BLUE);
+			result = counter_select("Set Protection", 25, 50, 200, BLUE);
 			popup(result);
 			break;
 		}
