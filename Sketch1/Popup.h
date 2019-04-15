@@ -3,5 +3,6 @@
 
 void popup(int returned);
 void popup(char* text);
+void popup(String popup);
 
 #endif
