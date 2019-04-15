@@ -292,61 +292,62 @@ void menu_test()
 
 void control()
 {
-#define LEFT_START_ANIMATION 9
-#define LEFT_END_ANIMATION 11
+	constexpr auto frame_left_start_animation = 9;
+	constexpr auto frame_left_end_animation = 11;
 	if (gb.buttons.repeat(BUTTON_LEFT, 0))
 	{
 		player_pos_x -= player_speed;
-		if (player_frame_number >= LEFT_START_ANIMATION && player_frame_number <= LEFT_END_ANIMATION)
+		if (player_frame_number >= frame_left_start_animation && player_frame_number <= frame_left_end_animation)
 		{
 			player_frame_number += animation_speed;
-			if (player_frame_number > LEFT_END_ANIMATION)
-				player_frame_number -= (LEFT_END_ANIMATION - LEFT_START_ANIMATION);
+			if (player_frame_number > frame_left_end_animation)
+				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
 		}
 		else
-			player_frame_number = LEFT_START_ANIMATION;
+			player_frame_number = frame_left_start_animation;
 	}
-#define RIGHT_START_ANIMATION 3
-#define RIGHT_END_ANIMATION 5
+
+	constexpr auto frame_right_start_animation = 3;
+	constexpr auto frame_right_end_animation = 5;
 	if (gb.buttons.repeat(BUTTON_RIGHT, 0))
 	{
 		player_pos_x += player_speed;
-		if (player_frame_number >= RIGHT_START_ANIMATION && player_frame_number <= RIGHT_END_ANIMATION)
+		if (player_frame_number >= frame_right_start_animation && player_frame_number <= frame_right_end_animation)
 		{
 			player_frame_number += animation_speed;
-			if (player_frame_number > RIGHT_END_ANIMATION)
-				player_frame_number -= (LEFT_END_ANIMATION - LEFT_START_ANIMATION);
+			if (player_frame_number > frame_right_end_animation)
+				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
 		}
 		else
-			player_frame_number = RIGHT_START_ANIMATION;
+			player_frame_number = frame_right_start_animation;
 	}
-#define UP_START_ANIMATION 0
-#define UP_END_ANIMATION 2
+	constexpr auto frame_up_start_animation = 0;
+	constexpr auto frame_up_end_animation = 2;
 	if (gb.buttons.repeat(BUTTON_UP, 0))
 	{
 		player_pos_y -= player_speed;
-		if (player_frame_number >= UP_START_ANIMATION && player_frame_number <= UP_END_ANIMATION)
+		if (player_frame_number >= frame_up_start_animation && player_frame_number <= frame_up_end_animation)
 		{
 			player_frame_number += animation_speed;
-			if (player_frame_number > UP_END_ANIMATION)
-				player_frame_number -= (LEFT_END_ANIMATION - LEFT_START_ANIMATION);
+			if (player_frame_number > frame_up_end_animation)
+				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
 		}
 		else
-			player_frame_number = UP_START_ANIMATION;
+			player_frame_number = frame_up_start_animation;
 	}
-#define DOWN_START_ANIMATION 6
-#define DOWN_END_ANIMATION 8
+	constexpr auto frame_down_start_animation = 6;
+	constexpr auto frame_down_end_animation = 8;
 	if (gb.buttons.repeat(BUTTON_DOWN, 0))
 	{
 		player_pos_y += player_speed;
-		if (player_frame_number >= DOWN_START_ANIMATION && player_frame_number <= DOWN_END_ANIMATION)
+		if (player_frame_number >= frame_down_start_animation && player_frame_number <= frame_down_end_animation)
 		{
 			player_frame_number += animation_speed;
-			if (player_frame_number > DOWN_END_ANIMATION)
-				player_frame_number -= (LEFT_END_ANIMATION - LEFT_START_ANIMATION);
+			if (player_frame_number > frame_down_end_animation)
+				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
 		}
 		else
-			player_frame_number = DOWN_START_ANIMATION;
+			player_frame_number = frame_down_start_animation;
 	}
 }
 
