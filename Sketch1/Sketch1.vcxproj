@@ -122,14 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Counter.h" />
-    <ClInclude Include="dummy.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Popup.h" />
     <ClInclude Include="__vm\.Sketch1.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Counter.cpp" />
-    <ClCompile Include="Image.cpp" />
     <ClCompile Include="Popup.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,9 +1,7 @@
 #include <Gamebuino-Meta.h>
-#include "dummy.h"
 #include "Counter.h"
 #include "Popup.h"
 #include "Debug.h"
-#include <cstdio>
 
 const uint16_t Character_sprite[] = {
 	16,     // frame width
@@ -244,16 +242,6 @@ const uint16_t Character_sprite[] = {
 
 Image spritesheet = Image(Character_sprite);
 
-
-
-const char* menu[] = 
-{
-	"Set Player Speed",
-	"Set Pos X",
-	"Set Pos Y",
-	"Set Anim Speed",
-};
-
 int player_pos_x = 20, player_pos_y = 20;
 int player_speed = 2;
 float player_frame_number = 0;
@@ -261,7 +249,16 @@ float animation_speed = 0.3f;
 
 void menu_test()
 {
+	const char* menu[] =
+	{
+		"Set Player Speed",
+		"Set Pos X",
+		"Set Pos Y",
+		"Set Anim Speed",
+	};
+
 	char name[16];
+
 	int value_returned;
 	if (gb.buttons.pressed(BUTTON_MENU) && gb.buttons.repeat(BUTTON_B, 0))
 	{
