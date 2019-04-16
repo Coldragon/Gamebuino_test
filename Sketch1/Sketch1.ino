@@ -290,65 +290,40 @@ void menu_test()
 	}
 }
 
+void move_and_animate(Button button, int x_offset, int y_offset, int frame_start, int frame_end)
+{
+	if (gb.buttons.repeat(button, 0))
+	{
+		player_pos_x += x_offset;
+		player_pos_y += y_offset;
+		if (player_frame_number >= frame_start && player_frame_number <= frame_end)
+		{
+			player_frame_number += animation_speed;
+			if (player_frame_number > frame_end)
+				player_frame_number -= (frame_end - frame_start);
+		}
+		else
+			player_frame_number = frame_start;
+	}
+}
+
 void control()
 {
 	constexpr auto frame_left_start_animation = 9;
 	constexpr auto frame_left_end_animation = 11;
-	if (gb.buttons.repeat(BUTTON_LEFT, 0))
-	{
-		player_pos_x -= player_speed;
-		if (player_frame_number >= frame_left_start_animation && player_frame_number <= frame_left_end_animation)
-		{
-			player_frame_number += animation_speed;
-			if (player_frame_number > frame_left_end_animation)
-				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
-		}
-		else
-			player_frame_number = frame_left_start_animation;
-	}
+	move_and_animate(BUTTON_LEFT, -1, 0, frame_left_start_animation, frame_left_end_animation);
 
 	constexpr auto frame_right_start_animation = 3;
 	constexpr auto frame_right_end_animation = 5;
-	if (gb.buttons.repeat(BUTTON_RIGHT, 0))
-	{
-		player_pos_x += player_speed;
-		if (player_frame_number >= frame_right_start_animation && player_frame_number <= frame_right_end_animation)
-		{
-			player_frame_number += animation_speed;
-			if (player_frame_number > frame_right_end_animation)
-				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
-		}
-		else
-			player_frame_number = frame_right_start_animation;
-	}
+	move_and_animate(BUTTON_RIGHT, +1, 0, frame_right_start_animation, frame_right_end_animation);
+
 	constexpr auto frame_up_start_animation = 0;
 	constexpr auto frame_up_end_animation = 2;
-	if (gb.buttons.repeat(BUTTON_UP, 0))
-	{
-		player_pos_y -= player_speed;
-		if (player_frame_number >= frame_up_start_animation && player_frame_number <= frame_up_end_animation)
-		{
-			player_frame_number += animation_speed;
-			if (player_frame_number > frame_up_end_animation)
-				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
-		}
-		else
-			player_frame_number = frame_up_start_animation;
-	}
+	move_and_animate(BUTTON_UP, 0, -1, frame_up_start_animation, frame_up_end_animation);
+
 	constexpr auto frame_down_start_animation = 6;
 	constexpr auto frame_down_end_animation = 8;
-	if (gb.buttons.repeat(BUTTON_DOWN, 0))
-	{
-		player_pos_y += player_speed;
-		if (player_frame_number >= frame_down_start_animation && player_frame_number <= frame_down_end_animation)
-		{
-			player_frame_number += animation_speed;
-			if (player_frame_number > frame_down_end_animation)
-				player_frame_number -= (frame_left_end_animation - frame_left_start_animation);
-		}
-		else
-			player_frame_number = frame_down_start_animation;
-	}
+	move_and_animate(BUTTON_DOWN, 0, +1, frame_down_start_animation, frame_down_end_animation);
 }
 
 void setup()
